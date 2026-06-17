@@ -40,10 +40,10 @@ type CalcResult = {
   numberOfPanels: number;
   roofCoveragePercent: number;
   selfSufficiencyPercent: number;
-  estimatedAnnualSavingsEur: number;
-  estimatedMonthlySavingsEur: number;
+  estimatedAnnualSavingsKm: number;
+  estimatedMonthlySavingsKm: number;
   estimatedPaybackYears: number;
-  estimatedSystemCostEur: number;
+  estimatedSystemCostKm: number;
   peakSunHoursPerDay: number;
   co2SavedKgPerYear: number;
   co2SavedTonsPerYear: number;
@@ -166,7 +166,7 @@ function KalkulatorPage() {
           latitude:  locationMode === "gps" ? coords.lat : undefined,
           longitude: locationMode === "gps" ? coords.lon : undefined,
           locationCity: locationMode === "city" ? selectedCity.name : undefined,
-          monthlyBillEur: bill,
+          monthlyBillKm: bill,
           roofAreaSqm: area,
           roofAzimuthDegrees: ORIENTATION_AZIMUTH[orientation],
           roofTiltDegrees: 30,
@@ -434,7 +434,7 @@ function ResultCards({ r, loading }: { r: Omit<CalcResult, "id">; loading: boole
       <div className="grid grid-cols-2 gap-4">
         <Stat icon={Sun}        label="Veličina sustava"   value={`${r.recommendedSystemKw} kWp`}                               tone="navy"  loading={loading} />
         <Stat icon={TrendingUp} label="Godišnja proizv."   value={`${r.estimatedAnnualProductionKwh.toLocaleString("hr-HR")} kWh`} tone="eco"   loading={loading} />
-        <Stat icon={Calculator} label="Mjesečna ušteda"    value={`KM ${r.estimatedMonthlySavingsEur}`}                           tone="solar" loading={loading} />
+        <Stat icon={Calculator} label="Mjesečna ušteda"    value={`KM ${r.estimatedMonthlySavingsKm}`}                           tone="solar" loading={loading} />
         <Stat icon={Leaf}       label="CO₂ ušteda/god"     value={`${r.co2SavedTonsPerYear} t`}                                 tone="eco"   loading={loading} />
       </div>
 
@@ -442,7 +442,7 @@ function ResultCards({ r, loading }: { r: Omit<CalcResult, "id">; loading: boole
         <div className="flex items-start justify-between gap-4">
           <div>
             <div className="text-xs uppercase tracking-wider text-muted-foreground">Procijenjena investicija</div>
-            <div className="mt-1 font-display text-4xl font-bold text-navy">KM {r.estimatedSystemCostEur.toLocaleString("hr-HR")}</div>
+            <div className="mt-1 font-display text-4xl font-bold text-navy">KM {r.estimatedSystemCostKm.toLocaleString("hr-HR")}</div>
           </div>
           <div className="text-right">
             <div className="text-xs uppercase tracking-wider text-muted-foreground">Povrat</div>

@@ -26,7 +26,7 @@ type Metrics = {
   leadsLast30Days: { day: string; count: number }[];
   avgSystemKw: number;
   avgPaybackYears: number;
-  totalSavingsEur: number;
+  totalSavingsKm: number;
   totalSystemValue: number;
   topCities: { city: string; count: number }[];
   // visitor stats
@@ -46,14 +46,14 @@ type Lead = {
   locationLabel: string | null;
   latitude: number | null;
   longitude: number | null;
-  monthlyBillEur: number;
+  monthlyBillKm: number;
   roofAreaSqm: number;
   roofType: string | null;
   meterType: string | null;
   recommendedSystemKw: number;
-  estimatedSystemCostEur: number;
+  estimatedSystemCostKm: number;
   estimatedPaybackYears: number;
-  estimatedAnnualSavingsEur: number;
+  estimatedAnnualSavingsKm: number;
   dataSource: string;
   status: "new" | "contacted" | "closed";
   createdAt: string;
@@ -341,7 +341,7 @@ function AdminDashboard() {
                     ["Datum", "createdAt", true],
                     ["Sustav", "recommendedSystemKw", true],
                     ["Krov / Priključak", null, false],
-                    ["Investicija", "estimatedSystemCostEur", true],
+                    ["Investicija", "estimatedSystemCostKm", true],
                     ["Povrat", "estimatedPaybackYears", true],
                     ["Status", "status", true],
                   ].map(([label, col, sortable]) => (
@@ -399,7 +399,7 @@ function AdminDashboard() {
                         {!lead.roofType && !lead.meterType && <span className="text-xs text-muted-foreground">—</span>}
                       </div>
                     </td>
-                    <td className="px-4 py-3 font-semibold text-navy whitespace-nowrap">KM {Number(lead.estimatedSystemCostEur).toLocaleString("hr-HR")}</td>
+                    <td className="px-4 py-3 font-semibold text-navy whitespace-nowrap">KM {Number(lead.estimatedSystemCostKm).toLocaleString("hr-HR")}</td>
                     <td className="px-4 py-3 whitespace-nowrap text-eco font-semibold">{lead.estimatedPaybackYears} god</td>
                     <td className="px-4 py-3">
                       <select value={lead.status}
