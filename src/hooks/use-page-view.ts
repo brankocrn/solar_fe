@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "@tanstack/react-router";
 
-const API_BASE = "http://localhost:3000";
+const API_BASE = import.meta.env.VITE_API_BASE ?? "http://localhost:3000";
 
 /** Returns a stable session ID for this browser tab, stored in sessionStorage. */
 function getSessionId(): string {
