@@ -37,7 +37,7 @@ function FinPage() {
           <div className="rounded-3xl border border-border bg-card p-8 shadow-elevated">
             <h2 className="font-display text-2xl font-bold text-navy">Kalkulator rate</h2>
             <div className="mt-6">
-              <div className="flex justify-between text-sm"><span className="font-semibold text-navy">Iznos kredita</span><span className="font-display text-lg font-bold text-navy">€{amount.toLocaleString("hr-HR")}</span></div>
+              <div className="flex justify-between text-sm"><span className="font-semibold text-navy">Iznos kredita</span><span className="font-display text-lg font-bold text-navy">KM {amount.toLocaleString("hr-HR")}</span></div>
               <input type="range" min={2000} max={30000} step={500} value={amount} onChange={(e) => setAmount(+e.target.value)} className="mt-3 w-full" />
             </div>
             <div className="mt-6">
@@ -46,7 +46,7 @@ function FinPage() {
             </div>
             <div className="mt-8 rounded-2xl bg-navy p-6 text-primary-foreground">
               <div className="text-xs uppercase tracking-wider text-primary-foreground/60">Mjesečna rata</div>
-              <motion.div key={m} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mt-1 font-display text-5xl font-bold">€{m.toFixed(0)}</motion.div>
+              <motion.div key={m} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mt-1 font-display text-5xl font-bold">KM {m.toFixed(0)}</motion.div>
               <div className="mt-1 text-xs text-primary-foreground/60">Kamatna stopa 6.9% EKS · informativni izračun</div>
             </div>
           </div>

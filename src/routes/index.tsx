@@ -239,7 +239,7 @@ function SavingsPreview() {
             </div>
             <div className="mt-6 grid grid-cols-3 gap-3">
               {[
-                { l: "Ušteda/god", v: "€2.180", c: "text-eco" },
+                { l: "Ušteda/god", v: "KM 2.180", c: "text-eco" },
                 { l: "Povrat", v: "6.4 god", c: "text-navy" },
                 { l: "CO₂", v: "4.2 t", c: "text-eco" },
               ].map((m) => (
@@ -327,9 +327,9 @@ function InstallerStrip() {
 
 function Comparison() {
   const offers = [
-    { n: "SunTech BH", panel: "JA Solar 450W", inv: "Huawei", w: "25 god", price: 7890, prod: 8420, fin: "€96/mj", reco: true },
-    { n: "Adriatic Solar", panel: "Trina Vertex 440W", inv: "SolarEdge", w: "20 god", price: 8240, prod: 8200, fin: "€102/mj" },
-    { n: "Eko Energija", panel: "LONGi Hi-MO 6", inv: "Fronius", w: "25 god", price: 8650, prod: 8600, fin: "€108/mj" },
+    { n: "SunTech BH", panel: "JA Solar 450W", inv: "Huawei", w: "25 god", price: 7890, prod: 8420, fin: "KM 96/mj", reco: true },
+    { n: "Adriatic Solar", panel: "Trina Vertex 440W", inv: "SolarEdge", w: "20 god", price: 8240, prod: 8200, fin: "KM 102/mj" },
+    { n: "Eko Energija", panel: "LONGi Hi-MO 6", inv: "Fronius", w: "25 god", price: 8650, prod: 8600, fin: "KM 108/mj" },
   ];
   return (
     <section className="bg-secondary/40">
@@ -346,7 +346,7 @@ function Comparison() {
               {o.reco && <span className="absolute -top-3 left-7 rounded-full bg-solar px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-navy">Najbolja vrijednost</span>}
               <h3 className="font-display text-lg font-semibold text-navy">{o.n}</h3>
               <div className="mt-4 flex items-baseline gap-1">
-                <span className="font-display text-4xl font-bold text-navy">€{o.price.toLocaleString("hr-HR")}</span>
+                <span className="font-display text-4xl font-bold text-navy">KM {o.price.toLocaleString("hr-HR")}</span>
               </div>
               <div className="mt-1 text-sm text-muted-foreground">ili {o.fin} kroz financiranje</div>
               <ul className="mt-6 space-y-3 text-sm">

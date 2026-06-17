@@ -277,7 +277,7 @@ function KalkulatorPage() {
                   </div>
 
                   {/* Bill slider */}
-                  <SliderField label="Mjesečni račun za struju" value={`€${bill}`}>
+                  <SliderField label="Mjesečni račun za struju" value={`KM ${bill}`}>
                     <input type="range" min={30} max={500} step={5} value={bill} onChange={(e) => setBill(+e.target.value)} className="range" />
                   </SliderField>
 
@@ -434,7 +434,7 @@ function ResultCards({ r, loading }: { r: Omit<CalcResult, "id">; loading: boole
       <div className="grid grid-cols-2 gap-4">
         <Stat icon={Sun}        label="Veličina sustava"   value={`${r.recommendedSystemKw} kWp`}                               tone="navy"  loading={loading} />
         <Stat icon={TrendingUp} label="Godišnja proizv."   value={`${r.estimatedAnnualProductionKwh.toLocaleString("hr-HR")} kWh`} tone="eco"   loading={loading} />
-        <Stat icon={Calculator} label="Mjesečna ušteda"    value={`€${r.estimatedMonthlySavingsEur}`}                           tone="solar" loading={loading} />
+        <Stat icon={Calculator} label="Mjesečna ušteda"    value={`KM ${r.estimatedMonthlySavingsEur}`}                           tone="solar" loading={loading} />
         <Stat icon={Leaf}       label="CO₂ ušteda/god"     value={`${r.co2SavedTonsPerYear} t`}                                 tone="eco"   loading={loading} />
       </div>
 
@@ -442,7 +442,7 @@ function ResultCards({ r, loading }: { r: Omit<CalcResult, "id">; loading: boole
         <div className="flex items-start justify-between gap-4">
           <div>
             <div className="text-xs uppercase tracking-wider text-muted-foreground">Procijenjena investicija</div>
-            <div className="mt-1 font-display text-4xl font-bold text-navy">€{r.estimatedSystemCostEur.toLocaleString("hr-HR")}</div>
+            <div className="mt-1 font-display text-4xl font-bold text-navy">KM {r.estimatedSystemCostEur.toLocaleString("hr-HR")}</div>
           </div>
           <div className="text-right">
             <div className="text-xs uppercase tracking-wider text-muted-foreground">Povrat</div>

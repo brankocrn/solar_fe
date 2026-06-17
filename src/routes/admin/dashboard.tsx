@@ -2,7 +2,7 @@ import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
 import { useEffect, useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import {
-  Sun, Users, TrendingUp, Leaf, Euro, Clock,
+  Sun, Users, TrendingUp, Leaf, Banknote, Clock,
   LogOut, Search, ChevronUp, ChevronDown,
   ChevronLeft, ChevronRight, MapPin, Mail, Phone,
   AlertCircle, Loader2, BarChart2, RefreshCw, Globe, Calculator,
@@ -211,7 +211,7 @@ function AdminDashboard() {
               <MetricCard icon={Users}     label="Ukupno upita"           value={String(metrics.total)}                         color="bg-eco-soft text-eco-foreground" />
               <MetricCard icon={TrendingUp} label="Prosj. veličina sustava" value={`${metrics.avgSystemKw} kWp`}                color="bg-solar-soft text-navy" />
               <MetricCard icon={Clock}     label="Prosj. povrat inv."       value={`${metrics.avgPaybackYears} god`}             color="bg-navy text-primary-foreground" />
-              <MetricCard icon={Euro}      label="Ukupna vrijednost"         value={`€${metrics.totalSystemValue.toLocaleString("hr-HR")}`} color="bg-eco-soft text-eco-foreground" />
+              <MetricCard icon={Banknote}  label="Ukupna vrijednost"         value={`KM ${metrics.totalSystemValue.toLocaleString("hr-HR")}`} color="bg-eco-soft text-eco-foreground" />
             </div>
 
             {/* Status breakdown */}
@@ -399,7 +399,7 @@ function AdminDashboard() {
                         {!lead.roofType && !lead.meterType && <span className="text-xs text-muted-foreground">—</span>}
                       </div>
                     </td>
-                    <td className="px-4 py-3 font-semibold text-navy whitespace-nowrap">€{Number(lead.estimatedSystemCostEur).toLocaleString("hr-HR")}</td>
+                    <td className="px-4 py-3 font-semibold text-navy whitespace-nowrap">KM {Number(lead.estimatedSystemCostEur).toLocaleString("hr-HR")}</td>
                     <td className="px-4 py-3 whitespace-nowrap text-eco font-semibold">{lead.estimatedPaybackYears} god</td>
                     <td className="px-4 py-3">
                       <select value={lead.status}
