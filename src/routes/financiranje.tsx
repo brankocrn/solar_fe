@@ -8,7 +8,7 @@ export const Route = createFileRoute("/financiranje")({
   head: () => ({
     meta: [
       { title: "Financiranje solarne elektrane — Prosumer.ba" },
-      { name: "description", content: "Kreditne i leasing opcije za solarne elektrane u BiH i Hrvatskoj. Procijeni mjesečnu ratu." },
+      { name: "description", content: "Kreditne i leasing opcije za solarne elektrane u BiH. Procijeni mjesečnu ratu." },
     ],
   }),
   component: FinPage,

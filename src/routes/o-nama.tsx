@@ -15,17 +15,17 @@ export const Route = createFileRoute("/o-nama")({
         <Sun className="h-12 w-12 text-solar" />
         <h1 className="mt-6 text-4xl font-bold tracking-tight text-navy sm:text-6xl">Ubrzavamo solarnu tranziciju Balkana.</h1>
         <p className="mt-8 text-lg leading-relaxed text-muted-foreground">
-          Prosumer.ba je nezavisna platforma osnovana s jednim ciljem — učiniti solarnu energiju jednostavnom, transparentnom i dostupnom svakom kućanstvu i biznisu u Bosni i Hercegovini, Hrvatskoj i regiji.
+          Prosumer.ba je nezavisna platforma osnovana s jednim ciljem — učiniti solarnu energiju jednostavnom, transparentnom i dostupnom svakom kućanstvu i biznisu u Bosni i Hercegovini.
         </p>
         <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
-          Vjerujemo da prelazak na solar ne bi trebao biti komplikovan. Zato povezujemo vlasnike nekretnina s provjerenim instalaterima, pružamo realne procjene uštede i pomažemo u financiranju.
+          Vjerujemo da prelazak na solar ne bi trebao biti komplikovan. Zato povezujemo vlasnike nekretnina s provjerenim instalaterima i pružamo realne procjene uštede.
         </p>
 
         <div className="mt-16 grid gap-6 sm:grid-cols-3">
           {[
-            { n: "240+", l: "Instalatera" },
-            { n: "12.5K", l: "Procjena" },
-            { n: "18 MW", l: "Instalirano" },
+            { n: "20+", l: "Instalatera" },
+            { n: "7.5K", l: "Procjena" },
+            { n: "3 MW", l: "Instalirano" },
           ].map((s) => (
             <div key={s.l} className="rounded-3xl border border-border bg-card p-6 text-center">
               <div className="font-display text-3xl font-bold text-navy">{s.n}</div>

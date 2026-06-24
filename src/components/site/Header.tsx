@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 const nav = [
   { to: "/kalkulator", label: "Kalkulator" },
   { to: "/kako-funkcionira", label: "Kako funkcionira" },
-  { to: "/financiranje", label: "Financiranje" },
   { to: "/blog", label: "Blog" },
 ];
 

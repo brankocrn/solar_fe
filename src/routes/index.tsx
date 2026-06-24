@@ -1,20 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, ShieldCheck, Sparkles, Sun, TrendingUp, Battery, Leaf, Star, Zap, CheckCircle2, MapPin, Clock, Award } from "lucide-react";
+import { ArrowRight, ShieldCheck, Sparkles, TrendingUp, Leaf, Star, Zap, CheckCircle2, MapPin, Clock, Award } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { Counter } from "@/components/site/Counter";
-import { useState } from "react";
-import heroHouse from "@/assets/hero-house.jpg";
-import cardHeating from "@/assets/card-heating.jpg";
-import cardElectricity from "@/assets/card-electricity.jpg";
-import cardBattery from "@/assets/card-battery.jpg";
-import cardEv from "@/assets/card-ev.jpg";
+import { SolarCalculatorWidget } from "./kalkulator";
+import { blogPosts } from "@/content/blog-posts";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Prosumer.ba — Uštedi do 70% na struji uz solarne elektrane" },
-      { name: "description", content: "Usporedi ponude provjerenih instalatera solarnih elektrana u BiH i Hrvatskoj. Izračunaj uštedu, ROI i financiranje u 60 sekundi." },
+      { name: "description", content: "Usporedi ponude provjerenih instalatera solarnih elektrana u BiH. Izračunaj uštedu i ROI u 60 sekundi." },
       { property: "og:title", content: "Prosumer.ba — Solarna platforma za Balkan" },
       { property: "og:description", content: "Provjereni instalateri, transparentne ponude, AI procjena uštede." },
     ],
@@ -44,18 +40,18 @@ function Hero() {
       <div className="mx-auto w-full px-4 pt-10 pb-16 sm:px-6 lg:px-10 lg:pt-16 lg:pb-24">
         <motion.div initial="hidden" animate="show" variants={fadeUp} className="text-center">
           <span className="inline-flex w-fit items-center gap-2 rounded-full border border-eco/30 bg-eco-soft px-3 py-1 text-xs font-semibold text-eco">
-            <Sparkles className="h-3.5 w-3.5" /> Solarna platforma za Balkan
+            <Sparkles className="h-3.5 w-3.5" /> Pomoćnik za prosumere
           </span>
           <h1 className="mx-auto mt-5 max-w-4xl text-4xl font-bold leading-[1.05] tracking-tight text-navy sm:text-5xl lg:text-6xl">
-            Napajaj svoj dom <span className="gradient-text">na svoj način</span>
+            Postani <span className="gradient-text">prosumer</span> — stavi solarne panele na svoj krov
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Solarne elektrane, baterije, punjači i toplinske pumpe — usporedi ponude provjerenih instalatera u BiH i Hrvatskoj.
+            Izračunaj uštedu, veličinu sustava i povrat investicije u 60 sekundi, pa zatraži ponude provjerenih instalatera u BiH.
           </p>
         </motion.div>
 
-        <div className="mt-12 -mx-2 sm:-mx-4 lg:-mx-6">
-          <HeroCards />
+        <div className="mt-12 mx-auto max-w-7xl">
+          <SolarCalculatorWidget />
         </div>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs text-muted-foreground">
@@ -68,122 +64,12 @@ function Hero() {
   );
 }
 
-const heroCards = [
-  { img: cardHeating, title: "Grijanje i\nhlađenje", desc: "Toplinske pumpe i klima sustavi prilagođeni za naše tržište.", to: "/kalkulator" },
-  { img: cardElectricity, title: "Tarife za\nstruju", desc: "Usporedi opskrbljivače i prebaci se na povoljniju tarifu.", to: "/financiranje" },
-  { img: heroHouse, title: "Snizi račun\nna desetljeća.", desc: "Usporedi solarne ponude i vidi dugoročnu uštedu za svoj dom.", to: "/kalkulator", cta: "Zatraži ponudu" },
-  { img: cardBattery, title: "Zatraži ponudu", desc: "Najbolje rješenje za Vas.", to: "/kalkulator" },
-  { img: cardEv, title: "Punjenje\nelektričnih auta", desc: "Kućni i poslovni punjači integrirani sa solarnom elektranom.", to: "/kalkulator" },
-];
-
-function HeroCards() {
-  const [active, setActive] = useState(2);
-  const next = () => setActive((a) => (a + 1) % heroCards.length);
-  const prev = () => setActive((a) => (a - 1 + heroCards.length) % heroCards.length);
-
-  return (
-    <div>
-      {/* Mobile: one full card at a time (swipeable) */}
-      <div className="md:hidden overflow-hidden">
-        <div
-          className="flex transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
-          style={{ transform: `translateX(-${active * 100}%)` }}
-        >
-          {heroCards.map((c, i) => (
-            <Link
-              key={i}
-              to={c.to}
-              aria-label={c.title.replace("\n", " ")}
-              className="relative block h-[420px] w-full flex-shrink-0 overflow-hidden rounded-2xl shadow-elevated"
-            >
-              <img src={c.img} alt="" loading={i === 2 ? "eager" : "lazy"} className="absolute inset-0 h-full w-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy/85 via-navy/35 to-transparent" />
-              <div className="relative flex h-full flex-col justify-end p-5 text-primary-foreground">
-                <h3 className="font-display text-3xl font-semibold leading-[1.05] tracking-tight whitespace-pre-line">
-                  {c.title}
-                </h3>
-                <p className="mt-3 max-w-md text-sm text-primary-foreground/90">{c.desc}</p>
-                <span className="mt-5 inline-flex w-fit items-center gap-2 rounded-full bg-solar px-5 py-3 text-sm font-semibold text-navy">
-                  {c.cta ?? "Saznaj više"} <ArrowRight className="h-4 w-4" />
-                </span>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </div>
-
-      {/* Desktop: expanding flex carousel */}
-      <div className="hidden md:flex gap-3 lg:gap-4 h-[460px] lg:h-[560px]">
-        {heroCards.map((c, i) => {
-          const isActive = i === active;
-          return (
-            <Link
-              key={i}
-              to={c.to}
-              onMouseEnter={() => setActive(i)}
-              onFocus={() => setActive(i)}
-              aria-label={c.title.replace("\n", " ")}
-              className="group relative block overflow-hidden rounded-3xl shadow-elevated transition-[flex-grow] duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] focus:outline-none focus-visible:ring-2 focus-visible:ring-solar"
-              style={{ flexGrow: isActive ? 5 : 1, flexBasis: 0, minWidth: 0 }}
-            >
-              <img
-                src={c.img}
-                alt=""
-                loading={i === 2 ? "eager" : "lazy"}
-                className="absolute inset-0 h-full w-full object-cover"
-              />
-              <div className={`absolute inset-0 transition-opacity duration-700 ${isActive ? "bg-gradient-to-t from-navy/85 via-navy/35 to-transparent" : "bg-gradient-to-t from-navy/80 via-navy/40 to-navy/10"}`} />
-              <div className="relative flex h-full flex-col justify-end p-5 lg:p-8 text-primary-foreground">
-                <h3 className={`font-display font-semibold leading-[1.05] tracking-tight whitespace-pre-line transition-all duration-500 ${isActive ? "text-3xl lg:text-5xl" : "text-lg lg:text-xl"}`}>
-                  {isActive ? c.title : c.title.replace("\n", " ")}
-                </h3>
-                <div
-                  className={`grid transition-[grid-template-rows,opacity,margin] duration-500 ${
-                    isActive ? "mt-4 grid-rows-[1fr] opacity-100" : "mt-0 grid-rows-[0fr] opacity-0"
-                  }`}
-                >
-                  <div className="overflow-hidden">
-                    <p className="max-w-md text-sm text-primary-foreground/90 lg:text-base">{c.desc}</p>
-                    <span className="mt-5 inline-flex w-fit items-center gap-2 rounded-full bg-solar px-5 py-3 text-sm font-semibold text-navy transition-transform group-hover:scale-[1.03]">
-                      {c.cta ?? "Saznaj više"} <ArrowRight className="h-4 w-4" />
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </Link>
-          );
-        })}
-      </div>
-
-      {/* Carousel controls */}
-      <div className="mt-6 flex items-center justify-center gap-4">
-        <button onClick={prev} aria-label="Prethodno" className="grid h-10 w-10 place-items-center rounded-full border border-border bg-background text-navy transition-colors hover:bg-secondary">
-          <ArrowLeft className="h-4 w-4" />
-        </button>
-        <div className="flex items-center gap-2">
-          {heroCards.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setActive(i)}
-              aria-label={`Kartica ${i + 1}`}
-              className={`h-2 rounded-full transition-all ${i === active ? "w-6 bg-navy" : "w-2 bg-navy/25 hover:bg-navy/50"}`}
-            />
-          ))}
-        </div>
-        <button onClick={next} aria-label="Sljedeće" className="grid h-10 w-10 place-items-center rounded-full border border-border bg-background text-navy transition-colors hover:bg-secondary">
-          <ArrowRight className="h-4 w-4" />
-        </button>
-      </div>
-    </div>
-  );
-}
-
 function TrustBar() {
   const stats = [
-    { v: 240, s: "+", l: "Provjerenih instalatera" },
-    { v: 12500, s: "+", l: "Izračunatih ponuda" },
+    { v: 20, s: "+", l: "Provjerenih instalatera" },
+    { v: 7500, s: "+", l: "Izračunatih ponuda" },
     { v: 4.9, s: "/5", l: "Prosječna ocjena", d: 1 },
-    { v: 18, s: " MW", l: "Instalirane snage" },
+    { v: 3, s: " MW", l: "Instalirane snage" },
   ];
   return (
     <section className="border-y border-border bg-secondary/40">
@@ -211,7 +97,7 @@ function SavingsPreview() {
             Naš algoritam uzima u obzir lokaciju, orijentaciju krova, potrošnju i lokalne tarife. Dobiješ realnu procjenu sustava, ROI period i CO₂ uštedu.
           </p>
           <ul className="mt-8 space-y-3 text-sm">
-            {["Realna procjena za BiH i HR tržište", "Preporuka veličine baterije", "Procjena financiranja i mjesečne rate", "Direktna veza s 3+ instalatera"].map((t) => (
+            {["Realna procjena za BiH tržište", "Preporuka veličine baterije", "Procjena povrata investicije", "Direktna veza s 3+ instalatera"].map((t) => (
               <li key={t} className="flex items-start gap-3"><CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-eco" /><span className="text-foreground">{t}</span></li>
             ))}
           </ul>
@@ -290,9 +176,9 @@ function HowItWorks() {
 function InstallerStrip() {
   const installers = [
     { n: "SunTech BH", c: "Mostar", r: 4.9, p: 87, b: "Premium Partner" },
-    { n: "Adriatic Solar", c: "Split", r: 4.8, p: 142, b: "Verified" },
+    { n: "Adriatic Solar", c: "Banja Luka", r: 4.8, p: 142, b: "Verified" },
     { n: "Eko Energija", c: "Sarajevo", r: 4.9, p: 64, b: "Premium Partner" },
-    { n: "Solaris HR", c: "Zagreb", r: 4.7, p: 210, b: "Verified" },
+    { n: "Solaris BH", c: "Tuzla", r: 4.7, p: 210, b: "Verified" },
   ];
   return (
     <section className="mx-auto max-w-7xl px-5 py-24 lg:px-8 lg:py-32">
@@ -377,11 +263,6 @@ function Row({ k, v }: { k: string; v: string }) {
 }
 
 function ContentTeaser() {
-  const posts = [
-    { t: "Subvencije za solarne elektrane u BiH 2026", d: "Pregled poticaja FBiH i RS za građane i poslovne korisnike.", c: "Vodič" },
-    { t: "Koliko stvarno štedi 6 kWp sustav u Mostaru?", d: "Analiza realne potrošnje i proizvodnje kroz cijelu godinu.", c: "Studija slučaja" },
-    { t: "Baterijski sustavi: kada se isplate?", d: "ROI analiza skladištenja energije za prosječno kućanstvo.", c: "Tehnologija" },
-  ];
   return (
     <section className="mx-auto max-w-7xl px-5 py-24 lg:px-8 lg:py-32">
       <div className="flex items-end justify-between gap-6">
@@ -392,16 +273,18 @@ function ContentTeaser() {
         <Link to="/blog" className="hidden items-center gap-2 text-sm font-semibold text-navy sm:inline-flex hover:text-eco">Sve objave <ArrowRight className="h-4 w-4" /></Link>
       </div>
       <div className="mt-12 grid gap-6 md:grid-cols-3">
-        {posts.map((p, i) => (
-          <motion.article key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="group cursor-pointer rounded-3xl border border-border bg-card p-7 transition-all hover:-translate-y-1 hover:shadow-elevated">
-            <div className="aspect-[16/10] rounded-2xl bg-gradient-to-br from-navy via-navy-soft to-eco" style={{
-              backgroundImage: i === 0 ? "var(--gradient-navy)" : i === 1 ? "var(--gradient-solar)" : "var(--gradient-eco)"
-            }} />
-            <span className="mt-5 inline-block text-[11px] font-semibold uppercase tracking-wider text-eco">{p.c}</span>
-            <h3 className="mt-2 font-display text-lg font-semibold text-navy group-hover:text-eco">{p.t}</h3>
-            <p className="mt-2 text-sm text-muted-foreground">{p.d}</p>
-          </motion.article>
+        {blogPosts.map((p, i) => (
+          <Link key={p.slug} to="/blog/$slug" params={{ slug: p.slug }}>
+            <motion.article initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="group cursor-pointer rounded-3xl border border-border bg-card p-7 transition-all hover:-translate-y-1 hover:shadow-elevated">
+              <div className="aspect-[16/10] overflow-hidden rounded-2xl">
+                <img src={p.image} alt={p.title} className="h-full w-full object-cover" />
+              </div>
+              <span className="mt-5 inline-block text-[11px] font-semibold uppercase tracking-wider text-eco">{p.category}</span>
+              <h3 className="mt-2 font-display text-lg font-semibold text-navy group-hover:text-eco">{p.title}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">{p.description}</p>
+            </motion.article>
+          </Link>
         ))}
       </div>
     </section>

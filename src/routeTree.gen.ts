@@ -9,18 +9,27 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SubvencijeRouteImport } from './routes/subvencije'
 import { Route as ONamaRouteImport } from './routes/o-nama'
 import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as KalkulatorRouteImport } from './routes/kalkulator'
 import { Route as KakoFunkcioniraRouteImport } from './routes/kako-funkcionira'
 import { Route as InstalateriRouteImport } from './routes/instalateri'
 import { Route as FinanciranjeRouteImport } from './routes/financiranje'
+import { Route as FaqRouteImport } from './routes/faq'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as AdminLoginRouteImport } from './routes/admin/login'
 import { Route as AdminDashboardRouteImport } from './routes/admin/dashboard'
 
+const SubvencijeRoute = SubvencijeRouteImport.update({
+  id: '/subvencije',
+  path: '/subvencije',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ONamaRoute = ONamaRouteImport.update({
   id: '/o-nama',
   path: '/o-nama',
@@ -51,6 +60,11 @@ const FinanciranjeRoute = FinanciranjeRouteImport.update({
   path: '/financiranje',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BlogRoute = BlogRouteImport.update({
   id: '/blog',
   path: '/blog',
@@ -61,10 +75,20 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => BlogRoute,
+} as any)
 const AdminIndexRoute = AdminIndexRouteImport.update({
   id: '/admin/',
   path: '/admin/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => BlogRoute,
 } as any)
 const AdminLoginRoute = AdminLoginRouteImport.update({
   id: '/admin/login',
@@ -79,95 +103,119 @@ const AdminDashboardRoute = AdminDashboardRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/blog': typeof BlogRoute
+  '/blog': typeof BlogRouteWithChildren
+  '/faq': typeof FaqRoute
   '/financiranje': typeof FinanciranjeRoute
   '/instalateri': typeof InstalateriRoute
   '/kako-funkcionira': typeof KakoFunkcioniraRoute
   '/kalkulator': typeof KalkulatorRoute
   '/kontakt': typeof KontaktRoute
   '/o-nama': typeof ONamaRoute
+  '/subvencije': typeof SubvencijeRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/admin/': typeof AdminIndexRoute
+  '/blog/': typeof BlogIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/blog': typeof BlogRoute
+  '/faq': typeof FaqRoute
   '/financiranje': typeof FinanciranjeRoute
   '/instalateri': typeof InstalateriRoute
   '/kako-funkcionira': typeof KakoFunkcioniraRoute
   '/kalkulator': typeof KalkulatorRoute
   '/kontakt': typeof KontaktRoute
   '/o-nama': typeof ONamaRoute
+  '/subvencije': typeof SubvencijeRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/admin': typeof AdminIndexRoute
+  '/blog': typeof BlogIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/blog': typeof BlogRoute
+  '/blog': typeof BlogRouteWithChildren
+  '/faq': typeof FaqRoute
   '/financiranje': typeof FinanciranjeRoute
   '/instalateri': typeof InstalateriRoute
   '/kako-funkcionira': typeof KakoFunkcioniraRoute
   '/kalkulator': typeof KalkulatorRoute
   '/kontakt': typeof KontaktRoute
   '/o-nama': typeof ONamaRoute
+  '/subvencije': typeof SubvencijeRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/admin/': typeof AdminIndexRoute
+  '/blog/': typeof BlogIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/blog'
+    | '/faq'
     | '/financiranje'
     | '/instalateri'
     | '/kako-funkcionira'
     | '/kalkulator'
     | '/kontakt'
     | '/o-nama'
+    | '/subvencije'
     | '/admin/dashboard'
     | '/admin/login'
+    | '/blog/$slug'
     | '/admin/'
+    | '/blog/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/blog'
+    | '/faq'
     | '/financiranje'
     | '/instalateri'
     | '/kako-funkcionira'
     | '/kalkulator'
     | '/kontakt'
     | '/o-nama'
+    | '/subvencije'
     | '/admin/dashboard'
     | '/admin/login'
+    | '/blog/$slug'
     | '/admin'
+    | '/blog'
   id:
     | '__root__'
     | '/'
     | '/blog'
+    | '/faq'
     | '/financiranje'
     | '/instalateri'
     | '/kako-funkcionira'
     | '/kalkulator'
     | '/kontakt'
     | '/o-nama'
+    | '/subvencije'
     | '/admin/dashboard'
     | '/admin/login'
+    | '/blog/$slug'
     | '/admin/'
+    | '/blog/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  BlogRoute: typeof BlogRoute
+  BlogRoute: typeof BlogRouteWithChildren
+  FaqRoute: typeof FaqRoute
   FinanciranjeRoute: typeof FinanciranjeRoute
   InstalateriRoute: typeof InstalateriRoute
   KakoFunkcioniraRoute: typeof KakoFunkcioniraRoute
   KalkulatorRoute: typeof KalkulatorRoute
   KontaktRoute: typeof KontaktRoute
   ONamaRoute: typeof ONamaRoute
+  SubvencijeRoute: typeof SubvencijeRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
   AdminLoginRoute: typeof AdminLoginRoute
   AdminIndexRoute: typeof AdminIndexRoute
@@ -175,6 +223,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/subvencije': {
+      id: '/subvencije'
+      path: '/subvencije'
+      fullPath: '/subvencije'
+      preLoaderRoute: typeof SubvencijeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/o-nama': {
       id: '/o-nama'
       path: '/o-nama'
@@ -217,6 +272,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FinanciranjeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/blog': {
       id: '/blog'
       path: '/blog'
@@ -231,12 +293,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/': {
+      id: '/blog/'
+      path: '/'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof BlogRoute
+    }
     '/admin/': {
       id: '/admin/'
       path: '/admin'
       fullPath: '/admin/'
       preLoaderRoute: typeof AdminIndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof BlogRoute
     }
     '/admin/login': {
       id: '/admin/login'
@@ -255,15 +331,29 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface BlogRouteChildren {
+  BlogSlugRoute: typeof BlogSlugRoute
+  BlogIndexRoute: typeof BlogIndexRoute
+}
+
+const BlogRouteChildren: BlogRouteChildren = {
+  BlogSlugRoute: BlogSlugRoute,
+  BlogIndexRoute: BlogIndexRoute,
+}
+
+const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  BlogRoute: BlogRoute,
+  BlogRoute: BlogRouteWithChildren,
+  FaqRoute: FaqRoute,
   FinanciranjeRoute: FinanciranjeRoute,
   InstalateriRoute: InstalateriRoute,
   KakoFunkcioniraRoute: KakoFunkcioniraRoute,
   KalkulatorRoute: KalkulatorRoute,
   KontaktRoute: KontaktRoute,
   ONamaRoute: ONamaRoute,
+  SubvencijeRoute: SubvencijeRoute,
   AdminDashboardRoute: AdminDashboardRoute,
   AdminLoginRoute: AdminLoginRoute,
   AdminIndexRoute: AdminIndexRoute,

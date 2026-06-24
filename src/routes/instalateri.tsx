@@ -11,7 +11,7 @@ export const Route = createFileRoute("/instalateri")({
   head: () => ({
     meta: [
       { title: "Provjereni solarni instalateri — Prosumer.ba" },
-      { name: "description", content: "Pregledaj provjerene instalatere solarnih elektrana u BiH i Hrvatskoj. Ocjene, certifikati, recenzije." },
+      { name: "description", content: "Pregledaj provjerene instalatere solarnih elektrana u BiH. Ocjene, certifikati, recenzije." },
     ],
   }),
   component: InstalateriPage,
@@ -40,7 +40,7 @@ function InstalateriPage() {
   const [partners, setPartners] = useState<Partner[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [filter, setFilter] = useState<"sve" | "BiH" | "HR">("sve");
+  const [filter, setFilter] = useState<"sve" | "BiH">("sve");
   const [q, setQ] = useState("");
 
   async function fetchPartners() {
@@ -78,7 +78,7 @@ function InstalateriPage() {
               <ShieldCheck className="h-3.5 w-3.5" /> Marketplace
             </span>
             <h1 className="mt-5 text-4xl font-bold tracking-tight text-navy sm:text-5xl">Pronađi pravog instalatera</h1>
-            <p className="mt-4 text-lg text-muted-foreground">Provjereni, ocijenjeni i certificirani instalateri u BiH i Hrvatskoj.</p>
+            <p className="mt-4 text-lg text-muted-foreground">Provjereni, ocijenjeni i certificirani instalateri u BiH.</p>
           </div>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -92,7 +92,7 @@ function InstalateriPage() {
               />
             </div>
             <div className="flex gap-2 rounded-full border border-border bg-card p-1">
-              {(["sve", "BiH", "HR"] as const).map((k) => (
+              {(["sve", "BiH"] as const).map((k) => (
                 <button
                   key={k}
                   onClick={() => setFilter(k)}

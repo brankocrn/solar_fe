@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
-import { Mail, Phone, MapPin, MessageCircle } from "lucide-react";
+import { Mail, Phone, MessageCircle } from "lucide-react";
 
 export const Route = createFileRoute("/kontakt")({
   head: () => ({
@@ -21,7 +21,6 @@ export const Route = createFileRoute("/kontakt")({
                 { i: Mail, l: "Email", v: "hello@prosumer.ba" },
                 { i: Phone, l: "Telefon", v: "+387 36 000 000" },
                 { i: MessageCircle, l: "WhatsApp", v: "+387 63 000 000" },
-                { i: MapPin, l: "Sjedište", v: "Mostar, BiH" },
               ].map((c) => (
                 <div key={c.l} className="flex items-center gap-4">
                   <div className="grid h-11 w-11 place-items-center rounded-2xl bg-secondary text-navy"><c.i className="h-5 w-5" /></div>

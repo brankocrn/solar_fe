@@ -12,7 +12,7 @@ export const Route = createFileRoute("/kalkulator")({
   head: () => ({
     meta: [
       { title: "Solarni kalkulator — Prosumer.ba" },
-      { name: "description", content: "Izračunaj uštedu, ROI i veličinu solarne elektrane za tvoju lokaciju u BiH ili Hrvatskoj." },
+      { name: "description", content: "Izračunaj uštedu, ROI i veličinu solarne elektrane za tvoju lokaciju u BiH." },
     ],
   }),
   component: KalkulatorPage,
@@ -71,6 +71,33 @@ function StepDots({ step }: { step: 1 | 2 }) {
 
 // ─── Main page ─────────────────────────────────────────────────────────────────
 function KalkulatorPage() {
+  return (
+    <SiteLayout>
+      {/* Hero */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 -z-10" style={{ background: "var(--gradient-hero)" }} />
+        <div className="mx-auto max-w-7xl px-5 pt-16 pb-12 lg:px-8 lg:pt-24">
+          <div className="max-w-3xl">
+            <span className="inline-flex items-center gap-2 rounded-full border border-eco/30 bg-eco-soft px-3 py-1 text-xs font-semibold text-eco">
+              <Calculator className="h-3.5 w-3.5" /> Solarni kalkulator
+            </span>
+            <h1 className="mt-5 text-4xl font-bold tracking-tight text-navy sm:text-5xl">
+              Procjena uštede u realnom vremenu
+            </h1>
+            <p className="mt-4 text-lg text-muted-foreground">Dva kratka koraka — bez registracije, bez obaveza.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-5 pb-24 lg:px-8 lg:pb-32">
+        <SolarCalculatorWidget />
+      </section>
+    </SiteLayout>
+  );
+}
+
+// ─── Reusable calculator widget (used on homepage and /kalkulator) ─────────────
+export function SolarCalculatorWidget() {
   const [step, setStep] = useState<1 | 2>(1);
 
   // Step-1 fields
@@ -185,25 +212,7 @@ function KalkulatorPage() {
 
   // ── Render ───────────────────────────────────────────────────────────────────
   return (
-    <SiteLayout>
-      {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 -z-10" style={{ background: "var(--gradient-hero)" }} />
-        <div className="mx-auto max-w-7xl px-5 pt-16 pb-12 lg:px-8 lg:pt-24">
-          <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-2 rounded-full border border-eco/30 bg-eco-soft px-3 py-1 text-xs font-semibold text-eco">
-              <Calculator className="h-3.5 w-3.5" /> Solarni kalkulator
-            </span>
-            <h1 className="mt-5 text-4xl font-bold tracking-tight text-navy sm:text-5xl">
-              Procjena uštede u realnom vremenu
-            </h1>
-            <p className="mt-4 text-lg text-muted-foreground">Dva kratka koraka — bez registracije, bez obaveza.</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-5 pb-24 lg:px-8 lg:pb-32">
-        <AnimatePresence mode="wait">
+    <AnimatePresence mode="wait">
 
           {/* ════════════════ STEP 1 ════════════════ */}
           {step === 1 && !result && (
@@ -421,9 +430,7 @@ function KalkulatorPage() {
             </motion.div>
           )}
 
-        </AnimatePresence>
-      </section>
-    </SiteLayout>
+    </AnimatePresence>
   );
 }
 
