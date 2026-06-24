@@ -41,7 +41,7 @@ export function Header() {
         </nav>
         <div className="hidden items-center gap-2 lg:flex">
           <Link to="/kalkulator" className="rounded-full bg-navy px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-elevated transition-transform hover:scale-[1.03]">
-            Zatraži ponude
+            Pokreni kalkulator
           </Link>
         </div>
         <button onClick={() => setOpen(!open)} className="rounded-full p-2 lg:hidden" aria-label="Menu">
@@ -57,7 +57,7 @@ export function Header() {
               </Link>
             ))}
             <Link to="/kalkulator" onClick={() => setOpen(false)} className="mt-2 rounded-full bg-navy px-5 py-3 text-center text-sm font-semibold text-primary-foreground">
-              Zatraži ponude
+              Pokreni kalkulator
             </Link>
           </div>
         </div>
