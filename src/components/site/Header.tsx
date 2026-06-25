@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Sun, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
+import { EuFlag } from "./EuFlag";
 
 const nav = [
   { to: "/kalkulator", label: "Kalkulator" },
@@ -26,6 +27,7 @@ export function Header() {
             <Sun className="h-5 w-5" strokeWidth={2.5} />
           </span>
           <span className="font-display text-lg font-semibold tracking-tight text-navy">Prosumer<span className="text-eco">.ba</span></span>
+          <EuFlag className="h-6 w-[36px] rounded-sm" />
         </Link>
         <nav className="hidden items-center gap-1 lg:flex">
           {nav.map((n) => (
