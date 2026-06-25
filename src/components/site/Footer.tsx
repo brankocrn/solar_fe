@@ -11,9 +11,11 @@ export function Footer() {
               <span className="grid h-9 w-9 place-items-center rounded-xl bg-solar text-navy"><Sun className="h-5 w-5" strokeWidth={2.5} /></span>
               <span className="font-display text-lg font-semibold">Prosumer.ba</span>
             </div>
-            <p className="mt-5 max-w-sm text-sm text-primary-foreground/70">
-              Najveća platforma za usporedbu solarnih elektrana u Bosni i Hercegovini. Provjereni instalateri, transparentne ponude.
-            </p>
+            <div className="mt-5 flex max-w-sm flex-wrap gap-2">
+              {["solarne elektrane", "BiH", "prosumer", "ušteda struje", "instalateri"].map((kw) => (
+                <span key={kw} className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-primary-foreground/70">{kw}</span>
+              ))}
+            </div>
           </div>
           <FooterCol title="Platforma" links={[
             { to: "/kalkulator", label: "Kalkulator uštede" },

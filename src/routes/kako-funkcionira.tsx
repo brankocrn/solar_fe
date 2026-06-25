@@ -26,7 +26,7 @@ export const Route = createFileRoute("/kako-funkcionira")({
       <section className="mx-auto max-w-7xl px-5 pb-24 lg:px-8 lg:pb-32">
         {[
           { n: "01", t: "Unesi detalje nekretnine", d: "Lokacija, mjesečna potrošnja, tip krova i orijentacija. Naš algoritam koristi PVGIS podatke za tvoju regiju.", i: MapPin },
-          { n: "02", t: "Usporedi ponude", d: "Do 5 detaljnih ponuda od provjerenih instalatera unutar 24 sata. Side-by-side usporedba — paneli, inverteri, garancije.", i: Zap },
+          { n: "02", t: "Dobij ponudu", d: "Detaljnu ponudu od provjerenog instalatera unutar 24 sata — paneli, inverteri, garancije.", i: Zap },
           { n: "03", t: "Odaberi i instaliraj", d: "Direktna komunikacija s instalaterom. Mi ostajemo uz tebe za podršku i recenziju.", i: ShieldCheck },
           { n: "04", t: "Štedi godinama", d: "Tvoj sustav radi 25+ godina. Mjesečna ušteda postaje čista zarada nakon povrata investicije.", i: TrendingUp },
         ].map((s, i) => (

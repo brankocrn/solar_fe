@@ -223,7 +223,7 @@ export function SolarCalculatorWidget() {
               <div className="rounded-3xl border border-border bg-card p-8 shadow-elevated space-y-5">
                 <div>
                   <h2 className="font-display text-2xl font-semibold text-navy">Tvoji kontakt podaci</h2>
-                  <p className="mt-1 text-sm text-muted-foreground">Kontaktirat ćemo te s ponudama prilagođenim tvojoj lokaciji.</p>
+                  <p className="mt-1 text-sm text-muted-foreground">Kontaktirat ćemo te s ponudom prilagođenom tvojoj lokaciji.</p>
                 </div>
 
                 {/* Name */}
@@ -382,7 +382,7 @@ export function SolarCalculatorWidget() {
                     className="flex w-full items-center justify-center gap-2 rounded-full bg-navy px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100">
                     {submitting
                       ? <><Loader2 className="h-4 w-4 animate-spin" /> Šaljem zahtjev…</>
-                      : <>Dohvati ponude <ArrowRight className="h-4 w-4" /></>}
+                      : <>Dohvati ponudu <ArrowRight className="h-4 w-4" /></>}
                   </button>
 
                   <style>{`.range{appearance:none;width:100%;height:6px;background:linear-gradient(to right,var(--navy),var(--eco));border-radius:9999px;outline:none;margin-top:14px}.range::-webkit-slider-thumb{appearance:none;width:22px;height:22px;border-radius:9999px;background:white;border:3px solid var(--navy);box-shadow:0 4px 12px rgba(0,0,0,.15);cursor:pointer}.range::-moz-range-thumb{width:22px;height:22px;border-radius:9999px;background:white;border:3px solid var(--navy);cursor:pointer}`}</style>
@@ -415,7 +415,7 @@ export function SolarCalculatorWidget() {
                 <div>
                   <p className="font-display text-lg font-semibold text-navy">Zahtjev primljen!</p>
                   <p className="mt-1 text-sm text-muted-foreground">
-                    Hvala, <strong>{name || "korisniče"}</strong>! Kontaktirat ćemo te na <strong>{email}</strong> s personaliziranim ponudama instalatera u tvojoj blizini.
+                    Hvala, <strong>{name || "korisniče"}</strong>! Kontaktirat ćemo te na <strong>{email}</strong> s personaliziranom ponudom instalatera u tvojoj blizini.
                   </p>
                 </div>
               </div>

@@ -17,15 +17,15 @@ export const Route = createFileRoute("/faq")({
 const faqs = [
   {
     q: "Kako funkcionira Prosumer.ba?",
-    a: "Unesete osnovne podatke o nekretnini (lokaciju, potrošnju, površinu krova), naš kalkulator izračuna preporučenu veličinu sustava i procijenjenu uštedu, a zatim vas povezujemo s provjerenim instalaterima koji vam šalju konkretne ponude.",
+    a: "Unesete osnovne podatke o nekretnini (lokaciju, potrošnju, površinu krova), naš kalkulator izračuna preporučenu veličinu sustava i procijenjenu uštedu, a zatim vas povezujemo s provjerenim instalaterom koji vam šalje konkretnu ponudu.",
   },
   {
     q: "Koliko traje proces od upita do montaže?",
-    a: "Ponude od instalatera obično stižu u roku od 24 sata od popunjavanja kalkulatora. Sama montaža sustava, nakon odabira ponude, traje u prosjeku 1-3 dana, ovisno o veličini sustava i dostupnosti opreme.",
+    a: "Ponuda od instalatera obično stigne u roku od 24 sata od popunjavanja kalkulatora. Sama montaža sustava, nakon prihvatanja ponude, traje u prosjeku 1-3 dana, ovisno o veličini sustava i dostupnosti opreme.",
   },
   {
     q: "Je li korištenje kalkulatora i platforme besplatno?",
-    a: "Da, korištenje kalkulatora i dobivanje ponuda od instalatera je u potpunosti besplatno za korisnike. Naknadu od instalatera naplaćujemo samo ako dođe do realizacije projekta.",
+    a: "Da, korištenje kalkulatora i dobivanje ponude od instalatera je u potpunosti besplatno za korisnike. Naknadu od instalatera naplaćujemo samo ako dođe do realizacije projekta.",
   },
   {
     q: "Koliko mogu uštedjeti sa solarnom elektranom?",

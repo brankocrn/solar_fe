@@ -97,7 +97,7 @@ function SavingsPreview() {
             Naš algoritam uzima u obzir lokaciju, orijentaciju krova, potrošnju i lokalne tarife. Dobiješ realnu procjenu sustava, ROI period i CO₂ uštedu.
           </p>
           <ul className="mt-8 space-y-3 text-sm">
-            {["Realna procjena za BiH tržište", "Preporuka veličine baterije", "Procjena povrata investicije", "Direktna veza s 3+ instalatera"].map((t) => (
+            {["Realna procjena za BiH tržište", "Preporuka veličine baterije", "Procjena povrata investicije", "Direktna veza s provjerenim instalaterom"].map((t) => (
               <li key={t} className="flex items-start gap-3"><CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-eco" /><span className="text-foreground">{t}</span></li>
             ))}
           </ul>
@@ -145,8 +145,8 @@ function SavingsPreview() {
 function HowItWorks() {
   const steps = [
     { n: "01", t: "Unesi detalje nekretnine", d: "Lokacija, potrošnja, tip krova — manje od minute.", i: MapPin },
-    { n: "02", t: "Usporedi ponude instalatera", d: "Do 5 ponuda od provjerenih instalatera u 24h.", i: Zap },
-    { n: "03", t: "Štedi novac sa solarom", d: "Odaberi najbolju ponudu i kreni štedjeti odmah.", i: TrendingUp },
+    { n: "02", t: "Dobij ponudu instalatera", d: "Jedna konkretna ponuda od provjerenog instalatera u 24h.", i: Zap },
+    { n: "03", t: "Štedi novac sa solarom", d: "Prihvati ponudu i kreni štedjeti odmah.", i: TrendingUp },
   ];
   return (
     <section className="bg-navy text-primary-foreground">
